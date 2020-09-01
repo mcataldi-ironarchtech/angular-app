@@ -1,1 +1,32 @@
 <p>servers works!</p>
+
+<!-- Square brackets indicate to Angular that we are property binding (one-way) -->
+
+<!-- <label>One-way Binding</label>
+<input 
+    type="text" 
+    class="form-control"
+    (input)="onUpdateServerName($event.target.value)" 
+/> -->
+
+<label>Two-way Binding</label>
+<input 
+    type="text" 
+    class="form-control"
+    [(ngModel)]="_serverName"
+/>
+<p>{{ _serverName }}</p>
+
+<!-- (input)="onUpdateServerName($event.target.value)" -->
+
+<button 
+    class="btn btn-primary" 
+    [disabled]="getIsDisabled()"
+    (click)="onCreateServer()"
+>Click Me</button>
+<p>{{ _isDisabled }}</p>
+
+<!-- Another way to insert text into an HTML element -->
+<p [innerText]="getIsDisabled()"></p>
+
+<!-- Property binding and string interpolation goes right to the Component.ts file for information. -->
