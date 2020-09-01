@@ -29,4 +29,25 @@
 <!-- Another way to insert text into an HTML element -->
 <p [innerText]="getIsDisabled()"></p>
 
+<!-- Example of an Angular Directive (changes the DOM) -->
+<p *ngIf="_serverCreated; else noServer">Server was created, server name is {{ _serverName }}</p>
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
 <!-- Property binding and string interpolation goes right to the Component.ts file for information. -->
+
+<hr />
+<div>
+    <label>Add New Server</label><br />
+
+    <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="_serverName" 
+    />
+    <p>{{ _serverName }}</p>
+
+    <button (click)="addServer()">Add Server</button>
+</div>
+
+<app-server *ngFor="let server of _servers; let i = index"></app-server>

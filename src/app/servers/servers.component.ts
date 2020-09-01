@@ -10,6 +10,8 @@ export class ServersComponent implements OnInit {
   _isDisabled = false;
   _serverCreationStatus = `No server was created.`;
   _serverName = '';
+  _serverCreated = false;
+  _servers = ['test_server_01', 'test_server_02'];
 
   constructor() { 
     setTimeout(() => {
@@ -25,8 +27,12 @@ export class ServersComponent implements OnInit {
   getIsDisabled = () => this._isDisabled;
 
   onCreateServer = () => {
+    this._serverCreated = true;
     this._serverCreationStatus = `Server was created.  The name is '${ this._serverName}.`;
+    this._servers.push(this._serverName);
   }
+
+  addServer = () => this._servers.push(this._serverName);
 
   onUpdateServerName = (value: string) => {
     // console.log(value);

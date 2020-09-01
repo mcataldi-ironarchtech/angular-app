@@ -1,5 +1,18 @@
 <h4>Server Component</h4>
 <p>{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }}</p>
+<p 
+    [ngStyle]="{ backgroundColor: getColor() }"
+    [ngClass]="{ online: serverStatus === 'online' }"    
+>Here is the server: {{ serverStatus }}</p>
+<button (click)="toggleDisplayDetails()" [innerText]="detailsText"></button>
+
+<div *ngIf="displayDetails">
+    <p>Secret Password</p>
+    <ol>
+        <li ngFor="let timestamp in timestampLog"></li>
+    </ol>
+</div>
+
 <!-- Cannot write a multi-line expression with the double-curly braces -->
 
 <!-- Databinding, one-way, two-way 
